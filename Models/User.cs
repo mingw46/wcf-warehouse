@@ -13,11 +13,14 @@ namespace WpfApp1.Models
         [Key]
         public int UserId { get; set; }
 
-        [Column(TypeName="nvarchar(50)")]
-        [Required(ErrorMessage ="Required")]
+        [Required(ErrorMessage = "Required.")]
         public string Username { get; set; }
-        public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "Required.")]
+        public byte[] PasswordHash { get; set; }
+   
+        [Required(ErrorMessage = "Required")]
+        [EmailAddress(ErrorMessage = "Invalid email address.")]
         public string Email { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> LastLoginDate { get; set; }

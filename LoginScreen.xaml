@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Login" Height="300" Width="300" FontSize="14" Background="#668B8B">
+        Title="Login" Height="350" Width="300" FontSize="14" Background="#668B8B">
     <Border Background="#2e3137" CornerRadius="20" Margin="20">
         <StackPanel>
             <Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator></Separator>
             <Label Content="Username" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
-            <TextBlock Name="txtUsername" Background="#545d6a" Foreground="White" FontSize="18"/>
+            <TextBox Name="txtUsername" Background="#545d6a" Foreground="White" FontSize="18"/>
             <Label Content="Password" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
-            <TextBlock Name="txtPassword" Background="#545d6a" Foreground="White" FontSize="18"/>
+            <PasswordBox Name="txtPassword"  Background="#545d6a" Foreground="White" FontSize="18"/>
+            <CheckBox Name="cbRememberMe" Content="Remember Me" HorizontalContentAlignment="Right" Foreground="White" FontSize="10" Margin="20 10" HorizontalAlignment="Right" />
             <Button Name="btnSubmit" Click="BtnSubmit_Click" Background="#545d6a" Margin="60 10" Content="Submit" Foreground="White" FontSize="18" />
         </StackPanel>
     </Border>
