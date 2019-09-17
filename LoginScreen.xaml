@@ -14,8 +14,13 @@
             <TextBox Name="txtUsername" Background="#545d6a" Foreground="White" FontSize="18"/>
             <Label Content="Password" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <PasswordBox Name="txtPassword"  Background="#545d6a" Foreground="White" FontSize="18"/>
+            <TextBlock> 
+                <Hyperlink Click="TxtRegisterRedirect_Click" Name="txtRegisterRedirect" Foreground="White" FontSize="8">
+                    Don't have account? Register
+                </Hyperlink>
+            </TextBlock>
             <CheckBox Name="cbRememberMe" Content="Remember Me" HorizontalContentAlignment="Right" Foreground="White" FontSize="10" Margin="20 10" HorizontalAlignment="Right" />
-            <Button Name="btnSubmit" Click="BtnSubmit_Click" Background="#545d6a" Margin="60 10" Content="Submit" Foreground="White" FontSize="18" />
+            <Button Name="btnSubmit" Click="BtnSubmit_Click" Background="#545d6a" Margin="60 10" Content="Login" Foreground="White" FontSize="18" />
         </StackPanel>
     </Border>
 </Window>

@@ -20,7 +20,7 @@ namespace WpfApp1
     /// </summary>
     public partial class LoginScreen : Window
     {
-        string registryPath = "Software\\Wow6432Node\\WpfApp1\\";
+        readonly string registryPath = "Software\\Wow6432Node\\WpfApp1\\";
         public LoginScreen()
         {
             InitializeComponent();
@@ -86,7 +86,7 @@ namespace WpfApp1
                                 findUser.RembemberMe = false;
                             }
 
-
+                            findUser.LastLoginDate = DateTime.Now;
                             db.SaveChanges();
 
                             MessageBox.Show("Logged in");
@@ -106,6 +106,13 @@ namespace WpfApp1
             {
                 MessageBox.Show("Entered login or password cannot be empty.");
             }
+        }
+
+        private void TxtRegisterRedirect_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterScreen registerScreen = new RegisterScreen();
+            registerScreen.Show();
+            this.Close();
         }
     }
 }

@@ -65,18 +65,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\201909160845010_A.cs" />
-    <Compile Include="Migrations\201909160845010_A.Designer.cs">
-      <DependentUpon>201909160845010_A.cs</DependentUpon>
+    <Compile Include="ItemsScreen.xaml.cs">
+      <DependentUpon>ItemsScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909160854046_B.cs" />
-    <Compile Include="Migrations\201909160854046_B.Designer.cs">
-      <DependentUpon>201909160854046_B.cs</DependentUpon>
+    <Compile Include="Migrations\201909170827085_Initial.cs" />
+    <Compile Include="Migrations\201909170827085_Initial.Designer.cs">
+      <DependentUpon>201909170827085_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909170849100_Items.cs" />
+    <Compile Include="Migrations\201909170849100_Items.Designer.cs">
+      <DependentUpon>201909170849100_Items.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\PasswordHash.cs" />
     <Compile Include="RegisterScreen.xaml.cs">
       <DependentUpon>RegisterScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="ItemsScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,11 +128,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201909160845010_A.resx">
-      <DependentUpon>201909160845010_A.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909170827085_Initial.resx">
+      <DependentUpon>201909170827085_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909160854046_B.resx">
-      <DependentUpon>201909160854046_B.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909170849100_Items.resx">
+      <DependentUpon>201909170849100_Items.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

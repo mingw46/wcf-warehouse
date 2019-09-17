@@ -24,5 +24,12 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ItemsScreen itemsScreen = new ItemsScreen();
+            itemsScreen.Show();
+            this.Hide();
+        }
     }
 }
