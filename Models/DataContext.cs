@@ -17,5 +17,7 @@ namespace WpfApp1.Models
         public DbSet<Item> Items { get; set; }
 
         public DbSet<ItemType> ItemTypes { get; set; }
+
+        public DbSet<Client> Clients { get; set; }
     }
 }

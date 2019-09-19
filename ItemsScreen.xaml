@@ -4,23 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
+        xmlns:data="clr-namespace:WpfApp1.Models"
         mc:Ignorable="d"
-        Title="ItemsScreen" Height="500" Width="800" Background="#668B8B">
+        Title="ItemsScreen" Height="500" Width="800" Background="#668B8B" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <ListView Name="itemsListView" SelectionChanged="ListView_SelectionChanged" Loaded="ItemsListView_Loaded">
-            <ListView.View>
-                <GridView x:Name="itemsGridView">
-                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding ItemID}"/>
-                    <GridViewColumn Header="Item Name" DisplayMemberBinding="{Binding ItemName}"/>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ArticleCode}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+
+        <DataGrid IsReadOnly="True" x:Name="itemsDataGrid" SelectedCellsChanged="ItemsDataGrid_SelectedCellsChanged" Loaded="ItemsDataGrid_Loaded" AutoGenerateColumns="False" ItemsSource="{Binding ItemsCollection}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ItemName" Width="100" Binding="{Binding ItemName}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Title" Width="100" Binding="{Binding SerialNumber}"></DataGridTextColumn>
+                <DataGridTextColumn Header="WorkStatus" Width="100" Binding="{Binding ItemType}"></DataGridTextColumn>
+                <DataGridTextColumn Header="FullName" Width="100" Binding="{Binding ClientName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="FullName" Width="100" Binding="{Binding CreationDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="FullName" Width="100" Binding="{Binding OccupiedDate}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnDeleteItem" Click="BtnDeleteItem_Click">Delete</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
         <GridSplitter Margin="50 0 0 0" Grid.Column="1" Width="5"/>
         <Border Grid.Column="2" Background="#2e3137" CornerRadius="20" Margin="10">
             <StackPanel >
@@ -37,7 +48,7 @@
                 <Grid>
                     <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
                     <TextBox  Margin="10 0" Name="txtClient" Background="#545d6a" Foreground="White" FontSize="18" Grid.Column="0"></TextBox>
-                    <Button Margin="10 0" HorizontalAlignment="Right" Width="30" Grid.Column="1">
+                    <Button Name="btnSelectClient" Click="BtnSelectClient_Click" Margin="10 0" HorizontalAlignment="Right" Width="30" Grid.Column="1">
                     </Button>
                 </Grid>
 

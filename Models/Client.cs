@@ -15,6 +15,8 @@ namespace WpfApp1.Models
         [Required]
         public string LastName { get; set; }
 
+        public string Email { get; set; }
+
         [Required(ErrorMessage = "Required.")]
         public Country CountryName { get; set; }
 
@@ -23,6 +25,15 @@ namespace WpfApp1.Models
 
         public ICollection<Item> Items { get; set; }
         public DateTime CreatedDate { get; set; }
+
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
 
         public enum Country
         {

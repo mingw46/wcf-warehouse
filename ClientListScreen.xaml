@@ -1,0 +1,35 @@
+﻿<Window x:Class="WpfApp1.ClientListScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="ClientListScreen" Height="450" Width="800">
+    <Grid>
+        <ListView ItemsSource="{Binding Clients}"
+          SelectedItem="{Binding Path=SelectedClient}">
+            
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="140" Header="First Name"
+         DisplayMemberBinding="{Binding FirstName}"  />
+                    <GridViewColumn Width="140" Header="Last Name"  
+         DisplayMemberBinding="{Binding LastName}" />
+                    <GridViewColumn Width="140" Header="Email Address"
+         DisplayMemberBinding="{Binding CountryName}" />
+                    <GridViewColumn Width="140" Header="Date Of Brith"
+         DisplayMemberBinding="{Binding DateOfBirth}" />
+                    <GridViewColumn Width="140" Header="Created Date"
+         DisplayMemberBinding="{Binding CreatedDate}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!--<DataGrid ItemsSource="{Binding Path=Items}"></DataGrid>
+        <StackPanel>
+            <TextBox Text="{Binding Path=BoundNumber, Mode=TwoWay}"></TextBox>
+            <Slider Value="{Binding Path=BoundNumber, Mode=TwoWay}"></Slider>
+            <Button Click="Button_Click" />
+        </StackPanel>--> 
+    </Grid>
+</Window>
