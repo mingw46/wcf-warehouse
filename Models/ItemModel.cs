@@ -8,6 +8,7 @@ namespace WpfApp1.Models
 {
     public class ItemModel
     {
+
         public int ItemID { get; set; }
         public string ItemName { get; set; }
         public string ItemType { get; set; }

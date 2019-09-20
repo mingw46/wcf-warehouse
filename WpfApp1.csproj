@@ -99,14 +99,23 @@
     <Compile Include="Migrations\201909191042488_Clients3.Designer.cs">
       <DependentUpon>201909191042488_Clients3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909200843225_Clients4.cs" />
+    <Compile Include="Migrations\201909200843225_Clients4.Designer.cs">
+      <DependentUpon>201909200843225_Clients4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Events\SelectedClientEventArgs.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\ItemType.cs" />
+    <Compile Include="Models\NotificationModel.cs" />
     <Compile Include="Models\PasswordHash.cs" />
+    <Compile Include="Models\Task.cs" />
     <Compile Include="RegisterScreen.xaml.cs">
       <DependentUpon>RegisterScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TaskListScreen.xaml.cs">
+      <DependentUpon>TaskListScreen.xaml</DependentUpon>
     </Compile>
     <Page Include="ClientListScreen.xaml">
       <SubType>Designer</SubType>
@@ -136,6 +145,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RegisterScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TaskListScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909191042488_Clients3.resx">
       <DependentUpon>201909191042488_Clients3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909200843225_Clients4.resx">
+      <DependentUpon>201909200843225_Clients4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

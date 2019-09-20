@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -21,38 +22,54 @@ namespace WpfApp1
     /// <summary>
     /// Interaction logic for ItemsScreen.xaml
     /// </summary>
-    public partial class ItemsScreen : Window
+    public partial class ItemsScreen : INotifyPropertyChanged
     {
-        private ObservableCollection<ItemModel> ItemsCollection = new ObservableCollection<ItemModel>();
+        
         public ItemsScreen()
         {
 
-            this.DataContext = this;
+           
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            InitializeItemCollection();
+            InitializeItemCollection(null);
+            this.DataContext = this;
         }
 
-        private void InitializeItemCollection()
+        private void InitializeItemCollection(int? itemID)
         {
             using (var db = new DataContext())
             {
-
-                var query = db.Items.Select(x => new ItemModel
+                if (itemID == null)
                 {
-                    ItemID = x.ItemID,
-                    ItemName = x.ItemName,
-                    SerialNumber = x.SerialNumber,
-                    ItemType = x.ItemType.ItemCode,
-                    ClientName = x.Client.FirstName + " " + x.Client.LastName,
-                    CreationDate = x.CreationDate,
-                    OccupiedDate = x.OccupiedDate
+                    var query = db.Items.Select(x => new ItemModel()
+                    {
+                        ItemID = x.ItemID,
+                        ItemName = x.ItemName,
+                        SerialNumber = x.SerialNumber,
+                        ItemType = x.ItemType.ItemCode,
+                        ClientName = x.Client.FirstName + " " + x.Client.LastName,
+                        CreationDate = x.CreationDate,
+                        OccupiedDate = x.OccupiedDate
+                    });
+                    ItemModels = query.ToObservableCollection();
+                }
+                else
+                {
+                    var query = db.Items.Select(x => new ItemModel()
+                    {
+                        ItemID = x.ItemID,
+                        ItemName = x.ItemName,
+                        SerialNumber = x.SerialNumber,
+                        ItemType = x.ItemType.ItemCode,
+                        ClientName = x.Client.FirstName + " " + x.Client.LastName,
+                        CreationDate = x.CreationDate,
+                        OccupiedDate = x.OccupiedDate
+                    }).Where(x => x.ItemID == itemID).FirstOrDefault();;
 
-                });
-                ItemsCollection = query.ToObservableCollection();
+                }
             }
         }
 
@@ -83,8 +100,8 @@ namespace WpfApp1
         }
 
 
-        private int ClientID { get; set; }
-        private void BtnSubmit_Click(object sender, RoutedEventArgs e)
+        private Client Client { get; set; }
+        private async void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
             if (cbItemType.SelectedItem == null || cbItemType.SelectedIndex == -1)
             {
@@ -95,7 +112,16 @@ namespace WpfApp1
             var serialNumber = txtSerialNumber.Text;
             var itemType = cbItemType.SelectedValue.ToString();
             
+           
+            await System.Threading.Tasks.Task.Run(() => AddNewItemTask(itemName, serialNumber, itemType));
 
+            this.DataContext = this;
+            MessageBox.Show("Dodano nowy produkt magazynowy.");
+            
+        }
+
+        public void AddNewItemTask(string itemName, string serialNumber, string itemType)
+        {
             using (var db = new DataContext())
             {
                 var selectedItem = db.ItemTypes.FirstOrDefault(x => x.ItemCode == itemType).ItemTypeID;
@@ -104,16 +130,16 @@ namespace WpfApp1
                 item.SerialNumber = serialNumber;
                 item.ItemTypeID = selectedItem;
                 item.CreationDate = DateTime.Now;
-                item.ClientID = ClientID;
+                item.ClientID = Client.ClientID;
                 db.Items.Add(item);
                 db.SaveChanges();
 
+                InitializeItemCollection(item.ItemID);
             }
-            MessageBox.Show("Dodano nowy produkt magazynowy.");
             
         }
-
-        
+        private ObservableCollection<ItemModel> ItemsCollection = new ObservableCollection<ItemModel>();
+        public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<ItemModel> ItemModels
         {
             get
@@ -124,14 +150,20 @@ namespace WpfApp1
             set
             {
                 ItemsCollection = value;
+                RaisePropertyChanged("Items");
             }
+        }
+
+        private void RaisePropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void ItemsDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            DataGrid dg = sender as DataGrid;
-            var row = dg.SelectedItems[0];
-            Console.WriteLine(row.ToString());
+       //     DataGrid dg = sender as DataGrid;
+      //      var row = dg.SelectedItems[0];
+       //     Console.WriteLine(row.ToString());
         }
 
         private void ItemsDataGrid_Loaded(object sender, RoutedEventArgs e)
@@ -150,7 +182,7 @@ namespace WpfApp1
         public void OnSelectClient(object o, SelectedClientEventArgs e)
         {
             txtClient.Text = e.Client.FullName;
-            ClientID = e.Client.ClientID;
+            Client = e.Client;
         }
 
         private ItemModel currentSelectedItem;
@@ -171,10 +203,16 @@ namespace WpfApp1
         {
             if (SelectedItem != null)
             {
-                ItemsCollection.Remove(SelectedItem);
+
+                ItemModels.Remove(SelectedItem);
+                this.DataContext = this;
                 using (var db = new DataContext())
                 {
+                    var query = db.Items.FirstOrDefault(x => 
+                       x.ItemID == SelectedItem.ItemID
+                     );
 
+                    db.Items.Remove(query);
                 }
             }
         }

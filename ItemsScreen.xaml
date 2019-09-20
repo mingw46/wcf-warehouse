@@ -14,7 +14,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <DataGrid IsReadOnly="True" x:Name="itemsDataGrid" SelectedCellsChanged="ItemsDataGrid_SelectedCellsChanged" Loaded="ItemsDataGrid_Loaded" AutoGenerateColumns="False" ItemsSource="{Binding ItemsCollection}">
+        <DataGrid IsReadOnly="True" x:Name="itemsDataGrid" SelectedCellsChanged="ItemsDataGrid_SelectedCellsChanged" Loaded="ItemsDataGrid_Loaded" AutoGenerateColumns="False" ItemsSource="{Binding ItemModels}" SelectedItem="{Binding Path=SelectedItem}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ItemName" Width="100" Binding="{Binding ItemName}" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Title" Width="100" Binding="{Binding SerialNumber}"></DataGridTextColumn>
