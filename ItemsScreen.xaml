@@ -22,6 +22,15 @@
                 <DataGridTextColumn Header="FullName" Width="100" Binding="{Binding ClientName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="FullName" Width="100" Binding="{Binding CreationDate}"></DataGridTextColumn>
                 <DataGridTextColumn Header="FullName" Width="100" Binding="{Binding OccupiedDate}"></DataGridTextColumn>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnEditItem" Click="BtnEditItem_Click">Edit</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -29,6 +38,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+
             </DataGrid.Columns>
         </DataGrid>
         
@@ -37,10 +47,10 @@
             <StackPanel >
                 <Label Padding="10" Margin="0 50 0 20" HorizontalAlignment="Center" Content="Dodawanie Przedmiotu" FontSize="20" Foreground="White"/>
                 <Separator></Separator>
-                <Label Content="Nazwa Artykułu" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                <Label Content="Nazwa Artykułu" Foreground="White" FontSize="14" HorizontalAlignment="Center" />
                 <TextBox Margin="10 0" Name="txtItemName" Background="#545d6a" Foreground="White" FontSize="18"/>
                 <Label Content="Typ Artykułu" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
-                <ComboBox Margin="10 0" Name="cbItemType" Background="#545d6a" Foreground="White" FontSize="18" SelectionChanged="CbCountryCode_SelectionChanged" Loaded="CbCountryCode_Loaded"/>
+                <ComboBox Margin="10 0" Name="cbItemType" Background="#545d6a" Foreground="White" FontSize="18" Loaded="CbItemType_Loaded"/>
                 <Label Content="Numer Seryjny" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
                 <TextBox Margin="10 0" Name="txtSerialNumber" Background="#545d6a" Foreground="White" FontSize="18"/>
 

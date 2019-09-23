@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +17,15 @@ namespace WpfApp1.Models
         public string Description { get; set; }
         public int CategoryID { get; set; }
         public int SubCategoryID { get; set; }
+
+        [ForeignKey("User")]
         public int AssignedUserID { get; set; }
+        public virtual User User { get; set; }
+
+        public int ItemID { get; set; }
+        public virtual Item Item { get; set; }
+
+        public virtual ObservableCollection<Ticket> Tickets { get; private set; }
 
     }
 }
