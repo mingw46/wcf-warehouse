@@ -25,7 +25,6 @@ namespace WpfApp1.Models
         public int ItemID { get; set; }
         public virtual Item Item { get; set; }
 
-        public virtual ObservableCollection<Ticket> Tickets { get; private set; }
 
     }
 }

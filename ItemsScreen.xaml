@@ -14,14 +14,14 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <DataGrid IsReadOnly="True" x:Name="itemsDataGrid" SelectedCellsChanged="ItemsDataGrid_SelectedCellsChanged" Loaded="ItemsDataGrid_Loaded" AutoGenerateColumns="False" ItemsSource="{Binding ItemModels}" SelectedItem="{Binding Path=SelectedItem}">
+        <DataGrid IsReadOnly="True" x:Name="itemsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding ItemModels}" SelectedItem="{Binding Path=SelectedItem}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ItemName" Width="100" Binding="{Binding ItemName}" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Title" Width="100" Binding="{Binding SerialNumber}"></DataGridTextColumn>
-                <DataGridTextColumn Header="WorkStatus" Width="100" Binding="{Binding ItemType}"></DataGridTextColumn>
-                <DataGridTextColumn Header="FullName" Width="100" Binding="{Binding ClientName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="FullName" Width="100" Binding="{Binding CreationDate}"></DataGridTextColumn>
-                <DataGridTextColumn Header="FullName" Width="100" Binding="{Binding OccupiedDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nazwa Artykułu" Width="100" Binding="{Binding ItemName}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Number Seryjny" Width="100" Binding="{Binding SerialNumber}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Typ Artykułu" Width="100" Binding="{Binding ItemType}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Dane Klienta" Width="100" Binding="{Binding ClientName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Data Utworzenia" Width="100" Binding="{Binding CreationDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Data Odbioru" Width="100" Binding="{Binding OccupiedDate}"></DataGridTextColumn>
 
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

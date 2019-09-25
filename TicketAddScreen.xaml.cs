@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for TaskListScreen.xaml
+    /// Interaction logic for TicketAddScreen.xaml
     /// </summary>
-    public partial class TaskListScreen : Window
+    public partial class TicketAddScreen : Window
     {
-        public TaskListScreen()
+        public TicketAddScreen()
         {
             InitializeComponent();
         }

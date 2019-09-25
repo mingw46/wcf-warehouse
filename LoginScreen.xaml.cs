@@ -87,10 +87,13 @@ namespace WpfApp1
                             }
 
                             findUser.LastLoginDate = DateTime.Now;
-                            db.SaveChanges();
+                            
 
                             MessageBox.Show("Logged in");
                             MainWindow dashboard = new MainWindow();
+                            dashboard.LoggedUser = findUser;
+                            db.SaveChanges();
+
                             dashboard.Show();
                             this.Close();
                         

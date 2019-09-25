@@ -1,0 +1,57 @@
+﻿<Window x:Class="WpfApp1.TicketAddScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="TicketAddScreen" Height="650" Width="400" Background="#668B8B">
+    <Grid>
+        <Border Background="#2e3137" CornerRadius="20" Margin="20">
+            <StackPanel>
+                <Label Foreground="White" Margin="0 20" Content="Dodawanie zgłoszenia" FontSize="32" HorizontalAlignment="Center" FontFamily="Sitka Banner" />
+                <Separator></Separator>
+                <Label Content="Temat" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+                <TextBox Name="txtUsername" Background="#545d6a" Foreground="White" FontSize="18" Margin="5"/>
+                <Label Content="Opis Problemu" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+                <RichTextBox Name="txtPassword"  Background="#545d6a" Foreground="White"  Margin="10" Padding="0 0 0 50" MaxHeight="100">
+                    <RichTextBox.Resources>
+                        <Style TargetType="{x:Type Paragraph}">
+                            <Setter Property="Margin" Value="0" />
+                        </Style>
+                    </RichTextBox.Resources>
+                </RichTextBox>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Content="Wybierz kategorie" Foreground="White" Margin="10" HorizontalAlignment="Center"/>
+                    <ComboBox Margin="10 0" Grid.Row="1" Grid.Column="0"></ComboBox>
+
+                    <Label Grid.Column="2" Grid.Row="0" Content="Wybierz podkategorie" Foreground="White" Margin="10" HorizontalAlignment="Center"/>
+                    <ComboBox Margin="10 0" Grid.Row="1" Grid.Column="2"></ComboBox>
+                </Grid>
+                
+                <Label Margin="0 10" Content="Wybór Artykułu" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+                <Grid>
+                    <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+                    <TextBox  Margin="10 0" Name="txtItem" Background="#545d6a" Foreground="White" FontSize="18" Grid.Column="0"></TextBox>
+                    <Button Name="btnSelectItem" Margin="10 0" HorizontalAlignment="Right" Width="30" Grid.Column="1">
+                    </Button>
+                </Grid>
+
+                <Button Name="btnSubmit" Background="#545d6a" Margin="60 25" Content="Zatwierdź" Foreground="White" FontSize="18" />
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

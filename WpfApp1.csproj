@@ -68,6 +68,9 @@
     <Compile Include="ClientListScreen.xaml.cs">
       <DependentUpon>ClientListScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InputBox.xaml.cs">
+      <DependentUpon>InputBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ItemsScreen.xaml.cs">
       <DependentUpon>ItemsScreen.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,10 @@
     <Compile Include="Migrations\201909231055104_Tickets1.Designer.cs">
       <DependentUpon>201909231055104_Tickets1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909251003378_Tickets2.cs" />
+    <Compile Include="Migrations\201909251003378_Tickets2.Designer.cs">
+      <DependentUpon>201909251003378_Tickets2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Events\SelectedClientEventArgs.cs" />
     <Compile Include="Models\Item.cs" />
@@ -122,10 +129,17 @@
     <Compile Include="RegisterScreen.xaml.cs">
       <DependentUpon>RegisterScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TaskListScreen.xaml.cs">
-      <DependentUpon>TaskListScreen.xaml</DependentUpon>
+    <Compile Include="TicketListScreen.xaml.cs">
+      <DependentUpon>TicketListScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TicketAddScreen.xaml.cs">
+      <DependentUpon>TicketAddScreen.xaml</DependentUpon>
     </Compile>
     <Page Include="ClientListScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InputBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,7 +170,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TaskListScreen.xaml">
+    <Page Include="TicketListScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TicketAddScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909231055104_Tickets1.resx">
       <DependentUpon>201909231055104_Tickets1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909251003378_Tickets2.resx">
+      <DependentUpon>201909251003378_Tickets2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -68,12 +68,6 @@ namespace WpfApp1
         }
 
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //var itemID = e.
-        }
-
-
         private void CbItemType_Loaded(object sender, RoutedEventArgs e)
         {
             using (var db = new DataContext())
@@ -83,11 +77,6 @@ namespace WpfApp1
             }
         }
 
-        private void ItemsListView_Loaded(object sender, RoutedEventArgs e)
-        {
-
-           // refreshListView();
-        }
 
 
         private Client Client { get; set; }
@@ -112,6 +101,9 @@ namespace WpfApp1
 
         public void AddNewItemTask(string itemName, string serialNumber, string itemType)
         {
+            InputBox inputBox = new InputBox();
+            inputBox.ShowDialog();
+            //string var = new InputBox("text").ShowDialog();
             using (var db = new DataContext())
             {
                 if (SelectedItem == null)
@@ -169,17 +161,6 @@ namespace WpfApp1
                 handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void ItemsDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-       //     DataGrid dg = sender as DataGrid;
-      //      var row = dg.SelectedItems[0];
-       //     Console.WriteLine(row.ToString());
-        }
-
-        private void ItemsDataGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-           //itemsDataGrid.Columns[0].Visibility = Visibility.Hidden;
-        }
 
         private void BtnSelectClient_Click(object sender, RoutedEventArgs e)
         {
