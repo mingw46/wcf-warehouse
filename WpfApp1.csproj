@@ -68,8 +68,8 @@
     <Compile Include="ClientListScreen.xaml.cs">
       <DependentUpon>ClientListScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InputBox.xaml.cs">
-      <DependentUpon>InputBox.xaml</DependentUpon>
+    <Compile Include="SelectOccupiedDateBox.cs">
+      <DependentUpon>SelectOccupiedDateBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="ItemsScreen.xaml.cs">
       <DependentUpon>ItemsScreen.xaml</DependentUpon>
@@ -120,10 +120,11 @@
     </Compile>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Events\SelectedClientEventArgs.cs" />
+    <Compile Include="Models\INotificationService.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\ItemType.cs" />
-    <Compile Include="Models\NotificationModel.cs" />
+    <Compile Include="Models\NotificationService.cs" />
     <Compile Include="Models\PasswordHash.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="RegisterScreen.xaml.cs">
@@ -139,7 +140,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="InputBox.xaml">
+    <Page Include="SelectOccupiedDateBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -17,10 +17,10 @@ namespace WpfApp1
     /// <summary>
     /// Interaction logic for InputBox.xaml
     /// </summary>
-    public partial class InputBox : Window
+    public partial class SelectOccupiedDateBox : Window
     {
 
-        public InputBox()
+        public SelectOccupiedDateBox()
         {
             InitializeComponent();
         }

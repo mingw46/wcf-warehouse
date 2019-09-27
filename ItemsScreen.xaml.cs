@@ -95,14 +95,13 @@ namespace WpfApp1
             // await System.Threading.Tasks.Task.Run(() => AddNewItemTask(itemName, serialNumber, itemType));
             AddNewItemTask(itemName, serialNumber, itemType);
  
-            MessageBox.Show("Dodano nowy produkt magazynowy.");
+            //MessageBox.Show("Dodano nowy produkt magazynowy.");
             
         }
 
         public void AddNewItemTask(string itemName, string serialNumber, string itemType)
         {
-            InputBox inputBox = new InputBox();
-            inputBox.ShowDialog();
+           
             //string var = new InputBox("text").ShowDialog();
             using (var db = new DataContext())
             {
@@ -114,23 +113,56 @@ namespace WpfApp1
                     item.SerialNumber = serialNumber;
                     item.ItemTypeID = selectedItem;
                     item.CreationDate = DateTime.Now;
-                    item.ClientID = Client.ClientID;
+                    if (Client != null)
+                    {
+                        item.ClientID = Client.ClientID;
+                        SelectOccupiedDateBox inputBox = new SelectOccupiedDateBox();
+                        inputBox.ShowDialog();
+                    }
                     db.Items.Add(item);
                     db.SaveChanges();
+                    updateForm();
                     InitializeItemCollection(item.ItemID);
+                    MessageBox.Show("Dodano nowy produkt magazynowy.");
                 }
                 else
                 {
+
                         var selectedItem = db.ItemTypes.FirstOrDefault(x => x.ItemCode == itemType).ItemTypeID;
                         var item = db.Items.Where(x => x.ItemID == SelectedItem.ItemID).FirstOrDefault();
                         item.ItemName = itemName;
                         item.SerialNumber = serialNumber;
                         item.ItemTypeID = selectedItem;
-                        item.CreationDate = DateTime.Now;
-                      //  item.ClientID = Client.ClientID;
+
+                    if (Client != null)
+                    {
+                            item.ClientID = Client.ClientID;
+                            SelectOccupiedDateBox inputBox = new SelectOccupiedDateBox();
+                            inputBox.ShowDialog();
+                    }
+                    else
+                    { 
+                        item.ClientID = null;
+                        Nullable<DateTime> dt = null;
+                        item.OccupiedDate = dt;
+                    }
+
+                    db.SaveChanges();
                         
-                        db.SaveChanges();
-                    
+                    ItemModel itemModel = new ItemModel();
+                    itemModel.ItemID = item.ItemID;
+                    itemModel.ItemName = item.ItemName;
+                    itemModel.ItemType = item.ItemType.ItemCode;
+                    itemModel.SerialNumber = item.SerialNumber;
+                    itemModel.CreationDate = item.CreationDate;
+                    if(item.Client != null)
+                        itemModel.ClientName = item.Client.FullName;
+                    var index = ItemsCollection.IndexOf(SelectedItem);
+                    ItemsCollection.Remove(SelectedItem);
+                    ItemsCollection.Insert(index, itemModel);
+                    SelectedItem = null;
+                    updateForm();
+                    MessageBox.Show($"Pomyslnie edytowano artykuł:\nID: {itemModel.ItemID}\nNazwa artykułu: {itemModel.ItemName}");
                 }
 
                 
@@ -210,9 +242,48 @@ namespace WpfApp1
             using (var db = new DataContext())
             {
                 var item = db.Items.Where(x => x.ItemID == SelectedItem.ItemID).FirstOrDefault();
-                var itemmodel = ItemModels.Where(x => x.ItemID == item.ItemID).FirstOrDefault();
-                SelectedItem = itemmodel;
+                updateForm(item);
             }
+        }
+
+        private void updateForm(Item item = null)
+        {
+            if (item == null)
+            {               
+                btnSubmit.Content = "Dodaj";
+                btnCancel.Visibility = Visibility.Hidden;
+                txtItemName.Text = "";
+                txtSerialNumber.Text = "";
+                txtClient.Text = "";
+                cbItemType.SelectedValue = null;
+                Client = null;
+            }
+            else
+            {
+                btnSubmit.Content = "Edytuj";
+                btnCancel.Visibility = Visibility.Visible;
+                txtItemName.Text = item.ItemName;
+                txtSerialNumber.Text = item.SerialNumber;
+                if (item.Client != null)
+                    txtClient.Text = item.Client.FullName;
+                else
+                    txtClient.Text = "";
+                cbItemType.SelectedValue = item.ItemType.ItemCode;
+                
+            }
+        }
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            updateForm();
+        }
+
+        private void BtnDeleteClient_Click(object sender, RoutedEventArgs e)
+        {
+            if(SelectedItem != null)
+            SelectedItem.ClientName = null;
+            Client = null;
+            txtClient.Text = "";
         }
     }
 

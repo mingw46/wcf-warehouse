@@ -57,13 +57,15 @@
                 <Label Content="Wybór Klienta" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
                 <Grid>
                     <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
-                    <TextBox  Margin="10 0" Name="txtClient" Background="#545d6a" Foreground="White" FontSize="18" Grid.Column="0"></TextBox>
-                    <Button Name="btnSelectClient" Click="BtnSelectClient_Click" Margin="10 0" HorizontalAlignment="Right" Width="30" Grid.Column="1">
+                    <TextBox  Margin="10 0" Name="txtClient" Background="#545d6a" Foreground="White" FontSize="18" Grid.Column="0" IsEnabled="False"></TextBox>
+                    <Button Name="btnSelectClient" Click="BtnSelectClient_Click" Content="*"  Margin="10 0" HorizontalAlignment="Right" Width="30" Grid.Column="1">
                     </Button>
+                    <Button Name="btnDeleteClient" Click="BtnDeleteClient_Click" Content="Clear"  Margin="40 0" HorizontalAlignment="Right" Width="50" Height="20" Grid.Column="1" />
                 </Grid>
 
-                <Button Name="btnSubmit" Background="#545d6a" Margin="60 25" Content="Zatwierdź" Foreground="White" FontSize="18" Click="BtnSubmit_Click" />
-
+                    <Button Name="btnSubmit" Background="#545d6a" Margin="60 25" Content="Dodaj" Foreground="White" FontSize="18" Click="BtnSubmit_Click" />
+                  <Button Name="btnCancel" Visibility="Hidden" Background="#DC143C" Margin="60 -15" Content="Anuluj" Foreground="White" FontSize="18" Click="BtnCancel_Click" />
+                
             </StackPanel>
         </Border>
     </Grid>

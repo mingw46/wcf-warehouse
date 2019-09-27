@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1.Models
 {
-    class NotificationModel
+    class NotificationService : INotificationService
     {
         public delegate void CreatedNotificationEventHandler(object o, EventArgs e);
         public event CreatedNotificationEventHandler CreatedNotification;
@@ -20,6 +20,11 @@ namespace WpfApp1.Models
         protected virtual void OnCreatedNotification()
         {
             if (CreatedNotification != null) CreatedNotification(this, new EventArgs());
+        }
+
+        public void ShowUserNotification()
+        {
+            throw new NotImplementedException();
         }
     }
 }
