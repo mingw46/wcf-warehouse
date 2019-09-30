@@ -10,7 +10,7 @@
         <StackPanel>
             <Label Content="Data odebrania" FontSize="24" HorizontalAlignment="Center"/>
             <Label Content="Ustaw datę odebrania przedmiotu od klienta (domyślnie 30 dni)" HorizontalAlignment="Center" Foreground="White" />
-            <Calendar x:Name="selectOccupiedDate" Margin="10" SelectedDate=""></Calendar>
+            <Calendar x:Name="selectOccupiedDate" Margin="10" SelectedDatesChanged="SelectOccupiedDate_SelectedDatesChanged"></Calendar>
         </StackPanel>
     </Grid>
 </Window>

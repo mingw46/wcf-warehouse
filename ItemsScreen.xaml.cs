@@ -118,6 +118,7 @@ namespace WpfApp1
                         item.ClientID = Client.ClientID;
                         SelectOccupiedDateBox inputBox = new SelectOccupiedDateBox();
                         inputBox.ShowDialog();
+                        Console.WriteLine(inputBox.SelectedOccupiedDate);
                     }
                     db.Items.Add(item);
                     db.SaveChanges();
@@ -139,6 +140,8 @@ namespace WpfApp1
                             item.ClientID = Client.ClientID;
                             SelectOccupiedDateBox inputBox = new SelectOccupiedDateBox();
                             inputBox.ShowDialog();
+                        var x = inputBox.SelectedOccupiedDate;
+                        Console.WriteLine(x);
                     }
                     else
                     { 

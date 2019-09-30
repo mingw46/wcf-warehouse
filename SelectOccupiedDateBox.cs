@@ -25,5 +25,12 @@ namespace WpfApp1
             InitializeComponent();
         }
 
+        public DateTime SelectedOccupiedDate { get; set; }
+
+        private void SelectOccupiedDate_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SelectedOccupiedDate = sender;
+            this.Close();
+        }
     }
 }
